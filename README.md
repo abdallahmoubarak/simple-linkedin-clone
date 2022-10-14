@@ -1,16 +1,15 @@
 # Simple LinkedIn Clone
-⭐ Implement a Linkedin clone, using React, Node.js, and MongoDB:
 
+⭐ Implement a Linkedin clone, using React, Node.js, and MongoDB:
 
 ##### Stack:
 
 <p align='left'>
-<img src='./src/nodejs.svg' height='55' alt=''>
+<img src='./src/nodejs.svg' height='60' alt=''>
 <img src='./src/react.svg' width='50' alt=''>
 <img src='./src/react-query.svg' height='50' alt=''>
 <img src='./src/mongodb.svg' height='55' alt=''>
 </p>
-
 
 ---
 
@@ -24,9 +23,7 @@
 - Companies shall be to post job openings.
 - Companies shall be able to review applicants.
 
-
 ---
-
 
 ## ✨TEAM Members
 
@@ -42,18 +39,25 @@
 
 #### Stage 1: creating ER diagram for the project
 
----
+Sketching a first version of ER diagram
 
-#### Stage 2: Creating Figma design
-
-Figma design:
-
+<img src='./src/LinkedIn_clone_db_v1.svg'  alt=''>
 
 ---
 
-#### Stage 3: Creating List of API's needed for the project
+#### Stage 2: Creating the project ui/ux design
 
-<img src='./src/apis.png' alt='edu'>
+##### - Sketching:
+
+<img src='./src/LinkedIn_clone_v1.svg'  alt=''>
+
+##### - Figma design:
+
+---
+
+#### Stage 3: Creating list of API's needed for the project
+
+<!-- <img src='./src/apis.png' > -->
 
 ---
 
@@ -61,11 +65,9 @@ Figma design:
 
 repo link : https://github.com/abdallahmoubarak/simple-linkedin-clone
 
-- Substage 1 : developing frontend pages using (reactjs)
-- Substage 2 : implementing Nodejs
+- Substage 1 : developing frontend pages using (Reactjs)
+- Substage 2 : implementing (Nodejs)
 - Substage 3 : listing APIs
-- Substage 4 : fitting API's in frontend (react-query)
-
+- Substage 4 : fitting API's in frontend (React-query)
 
 ---
-
