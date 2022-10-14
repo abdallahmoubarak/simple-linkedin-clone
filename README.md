@@ -53,6 +53,8 @@ Sketching a first version of ER diagram
 
 ##### - Figma design:
 
+<img src='./src/LinkedIn_clone_mockup_v1.svg'  alt=''>
+
 ---
 
 #### Stage 3: Creating list of API's needed for the project
