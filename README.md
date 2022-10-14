@@ -37,7 +37,7 @@
 
 ## 🎯 Project Process
 
-#### Stage 1: creating ER diagram for the project
+#### Stage 1: Creating ER diagram for the project
 
 Sketching a first version of ER diagram
 
