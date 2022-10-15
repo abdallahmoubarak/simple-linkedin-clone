@@ -37,16 +37,28 @@ const createJobOffer = async (req, res) => {
 };
 
 const getJobOffers = async (req, res) => {
-  const offers = await Offer.find().exec();
+  try {
+    const offers = await Offer.find().exec();
 
-  res.json(offers);
+    res.json(offers);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
 };
 
 const getNotifications = async (req, res) => {
-  const ids = req.user.follows;
-  const offers = await Offer.find().where("_id").in(ids).exec();
+  try {
+    const ids = req.user.follows;
+    const offers = await Offer.find().where("_id").in(ids).exec();
 
-  res.json(offers);
+    res.json(offers);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
 };
 
 module.exports = { createJobOffer, getJobOffers, getNotifications };
