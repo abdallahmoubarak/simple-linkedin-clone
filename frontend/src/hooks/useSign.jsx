@@ -3,15 +3,15 @@ import { client } from "..";
 import { authApi, request } from "../util/axiosInstance";
 
 const signUp = (user) => {
-  return request({ url: "/sign/signup", data: user, method: "post" });
+  return request({ url: "/auth/signup", data: user, method: "post" });
 };
 
 export const useSignUp = (setMsg) => {
   return useMutation(signUp, {
     onSuccess: (res) => {
       authApi.defaults.headers["Content-Type"] = "application/json";
-      authApi.defaults.headers.Authorization = `Bearer ${res.data?.authorisation?.token}`;
-      localStorage.setItem("JWT", res.data?.authorisation?.token);
+      authApi.defaults.headers.Authorization = `Bearer ${res.data?.authorization?.token}`;
+      localStorage.setItem("JWT", res.data?.authorization?.token);
       client.setQueryData("User", res.data?.user);
     },
     onError: (err) => {
@@ -21,15 +21,15 @@ export const useSignUp = (setMsg) => {
 };
 
 const signIn = (user) => {
-  return request({ url: "/sign/signin", data: user, method: "post" });
+  return request({ url: "/auth/signin", data: user, method: "post" });
 };
 
 export const useSignIn = (setMsg) => {
   return useMutation(signIn, {
     onSuccess: (res) => {
       authApi.defaults.headers["Content-Type"] = "application/json";
-      authApi.defaults.headers.Authorization = `Bearer ${res.data?.authorisation?.token}`;
-      localStorage.setItem("JWT", res.data?.authorisation?.token);
+      authApi.defaults.headers.Authorization = `Bearer ${res.data?.authorization?.token}`;
+      localStorage.setItem("JWT", res.data?.authorization?.token);
       client.setQueryData("User", res.data?.user);
     },
     onError: () => {
@@ -39,7 +39,7 @@ export const useSignIn = (setMsg) => {
 };
 
 const getUser = () => {
-  return authApi.get("/users/current").then((res) => res.data?.data);
+  return authApi.get("/users/current").then((res) => res.data?.user);
 };
 
 export const useCurrentUser = ({ enabled }) => {

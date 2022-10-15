@@ -7,7 +7,7 @@ import Select from "./Select";
 
 export default function Sign({ currentUser }) {
   const [signup, setSignUp] = useState(true);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Personal");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
@@ -19,7 +19,7 @@ export default function Sign({ currentUser }) {
     setMsg("");
     let type = selected;
     if (!validSign(signType, email, password, name, type))
-      return setMsg("Not valid inputs");
+      return setMsg("Inputs are not valid");
 
     signType === "signin"
       ? signIn({ email, password })
@@ -43,7 +43,7 @@ export default function Sign({ currentUser }) {
             />
             {signup && (
               <Select
-                name="Type"
+                name="Account type"
                 options={options}
                 setSelected={setSelected}
                 selected={selected}
@@ -71,4 +71,4 @@ export default function Sign({ currentUser }) {
     </>
   );
 }
-const options = ["Individual", "Company"];
+const options = ["Personal", "Company"];
