@@ -18,4 +18,19 @@ const followCompany = async (req, res) => {
   res.json({ message: "wait for it" });
 };
 
-module.exports = { getUser, updateUser, followCompany };
+const getCurrentUser = async (req, res) => {
+  try {
+    return res.status(200).json(
+      res.json({
+        status: "success",
+        user: req.user,
+      }),
+    );
+  } catch (err) {
+    return res.status(400).json({
+      error: "User not found",
+    });
+  }
+};
+
+module.exports = { getUser, updateUser, followCompany, getCurrentUser };

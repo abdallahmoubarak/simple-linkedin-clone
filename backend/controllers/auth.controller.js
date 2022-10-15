@@ -42,7 +42,11 @@ const signin = async (req, res) => {
   if (!isMatch) return res.status(404).json({ message: "Invalid Credentials" });
 
   const token = generateToken(user);
-  res.status(200).json(token);
+  res.json({
+    status: "success",
+    user,
+    authorization: { token, type: "bearer" },
+  });
 };
 
 module.exports = { signin, signup };
