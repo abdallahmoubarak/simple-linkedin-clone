@@ -20,12 +20,10 @@ const followCompany = async (req, res) => {
 
 const getCurrentUser = async (req, res) => {
   try {
-    return res.status(200).json(
-      res.json({
-        status: "success",
-        user: req.user,
-      }),
-    );
+    return res.status(200).json({
+      status: "success",
+      user: req.user,
+    });
   } catch (err) {
     return res.status(400).json({
       error: "User not found",
