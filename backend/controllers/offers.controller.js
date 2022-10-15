@@ -28,4 +28,10 @@ const createJobOffer = async (req, res) => {
   }
 };
 
-module.exports = { createJobOffer };
+const getJobOffers = async (req, res) => {
+  const offers = await Offer.find().exec();
+
+  res.json(offers);
+};
+
+module.exports = { createJobOffer, getJobOffers };
