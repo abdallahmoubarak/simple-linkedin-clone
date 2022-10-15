@@ -1,13 +1,14 @@
 const express = require("express");
 require("dotenv").config();
+require("./config/db.config");
 
 const app = express();
+app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+const authRoutes = require("./routes/auth.routes");
+app.use("/auth", authRoutes);
 
-app.listen(process.env.port, (err) => {
+app.listen(process.env.PORT, (err) => {
   if (err) console.log(err);
-  console.log("Server started");
+  console.log(`server running on port ${process.env.PORT}`);
 });
