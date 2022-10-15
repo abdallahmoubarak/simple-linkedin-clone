@@ -53,7 +53,7 @@ Sketching a first version of ER diagram
 
 ##### - Figma design:
 
-<img src='./src/LinkedIn_clone_mockup_v1.svg'  alt=''>
+<img src='./src/LinkedIn_clone_mockup_v2.svg'  alt=''>
 
 ---
 
