@@ -34,3 +34,174 @@ img {
 h1 {
   font-weight: 1000;
 }
+
+body {
+  background-color: var(--light-gray);
+}
+
+/**************** Sign ******************/
+
+.sign {
+  background: var(--primary-color);
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem 0rem;
+  position: relative;
+}
+
+.sign-done {
+  height: 5rem;
+  padding: 0rem;
+  transition: height 1s ease-in;
+  -webkit-transition: height 1s ease-in;
+  -moz-transition: height 1s ease-in;
+  -ms-transition: height 1s ease-in;
+  -o-transition: height 1s ease-in;
+}
+
+/**************** Input ****************/
+
+.input-container {
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  padding-top: 1.6rem;
+  padding-bottom: 0.4rem;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+  outline: none;
+}
+
+.invalid-input {
+  border: 2px solid red;
+}
+
+.input::placeholder {
+  color: transparent;
+}
+
+.input:placeholder-shown + label,
+label {
+  font-size: 1.4rem;
+  text-align: left;
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  padding: 0.2rem 1.1rem;
+  color: gray;
+  transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  cursor: text;
+}
+
+.input:focus {
+  border: 2px inset solid gray;
+}
+
+.input:not(:placeholder-shown) + label,
+.input:focus + label {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  top: 0.2rem;
+  transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+}
+
+.input:focus + .txt-right {
+  text-align: right;
+  width: 100%;
+}
+
+/***************** sign ******************/
+
+h1 {
+  width: 100%;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+h3 {
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+.sign-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 26rem;
+  margin: auto;
+  padding: 0 1rem;
+  padding-top: 3rem;
+  color: var(--primary-color);
+}
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  padding: 1rem 0;
+}
+.switch {
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0.2rem;
+}
+.invalid-msg {
+  font-size: 0.8rem;
+  text-align: left;
+  min-height: 1rem;
+  width: 100%;
+}
+textarea {
+  width: 100%;
+  padding: 1rem 0.8rem;
+  font-size: 1.2rem;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+/*************** logout ******************/
+
+.logout {
+  position: absolute;
+  top: 1.8rem;
+  right: 2rem;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.greating {
+  padding: 1.6rem 1.2rem;
+  font-size: 1.4rem;
+  color: white;
+  font-weight: bold;
+}
