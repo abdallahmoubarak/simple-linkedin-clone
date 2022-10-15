@@ -1,6 +1,6 @@
 import Logo from "./Logo";
 
-export default function TopBar({ currentUser, userType }) {
+export default function TopBar({ currentUser }) {
   return (
     <div className="top-bar">
       <div className="logo-container">
@@ -10,7 +10,7 @@ export default function TopBar({ currentUser, userType }) {
       <div className="user-options-container">
         {currentUser && (
           <>
-            <div>{userType === "Individual" && <span>🔔</span>}</div>
+            <div>{currentUser.type === "Personal" && <span>🔔</span>}</div>
             <div className="profile-img"></div>
           </>
         )}
