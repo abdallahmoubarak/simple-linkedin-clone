@@ -5,7 +5,7 @@ import CompanyOfferCard from "../CompanyOfferCard";
 import EmptyCompanyOfferCard from "../EmptyCompanyOfferCard";
 
 export default function CompanyPage({ currentUser }) {
-  const { data: offers } = useFetchOwnOffers(currentUser.id);
+  const { data: offers } = useFetchOwnOffers();
   const [addOffer, setAddOffer] = useState(false);
 
   return (
@@ -21,12 +21,9 @@ export default function CompanyPage({ currentUser }) {
           {addOffer && <EmptyCompanyOfferCard />}
         </div>
         <div className="cards-container">
+          <div className="offer-card-title">Past Job Offers</div>
           {offers?.map((offer, i) => (
-            <CompanyOfferCard
-              key={i}
-              title={offer.title}
-              requirments={offer.requirments}
-            />
+            <CompanyOfferCard key={i} offer={offer} />
           ))}
         </div>{" "}
       </div>

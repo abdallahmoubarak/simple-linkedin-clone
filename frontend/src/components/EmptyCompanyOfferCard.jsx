@@ -3,6 +3,7 @@ import {
   IoIosArrowDroprightCircle,
   IoIosRemoveCircleOutline,
 } from "react-icons/io";
+import { useCreateOffer } from "../hooks/useOfferData";
 import Button from "./Button";
 import Input from "./Input";
 
@@ -10,7 +11,9 @@ export default function EmptyCompanyOfferCard() {
   const [title, setTitle] = useState("");
   const [requirments, setRequirments] = useState([]);
   const [requirment, setRequirment] = useState("");
-  const [description, setDescription] = useState([]);
+  const [description, setDescription] = useState("");
+
+  const { mutate: createOffer } = useCreateOffer();
 
   return (
     <div className="offer-card">
@@ -55,7 +58,11 @@ export default function EmptyCompanyOfferCard() {
           </div>
         </div>
         <div className="offer-card-btn-container">
-          <Button text="Add" font="1rem" />
+          <Button
+            text="Create the offer"
+            font="1rem"
+            onClick={() => createOffer({ title, requirments, description })}
+          />
         </div>
       </div>
     </div>

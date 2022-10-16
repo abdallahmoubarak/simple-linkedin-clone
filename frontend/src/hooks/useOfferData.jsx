@@ -3,8 +3,8 @@ import { client } from "..";
 import { authApi } from "../util/axiosInstance";
 
 const getOffers = async () => {
-  const res = await authApi.get("/offers/");
-  return res.data;
+  const res = await authApi.get("/offers");
+  return res.data.offers;
 };
 
 export const useFetchOffers = () => {
@@ -15,28 +15,30 @@ export const useFetchOffers = () => {
   });
 };
 
-const getOwnOffers = async (id) => {
-  const res = await authApi.get(`/offers/${id}`);
-  return res.data;
+const getOwnOffers = async () => {
+  const res = await authApi.get("/offers/own");
+  return res.data.offers;
 };
 
-export const useFetchOwnOffers = (id) => {
-  return useQuery(["Offers"], () => getOwnOffers(id), {
+export const useFetchOwnOffers = () => {
+  return useQuery({
+    queryFn: () => getOwnOffers(),
+    queryKey: "Offers",
     refetchOnWindowFocus: false,
   });
 };
 
-const addOffer = (offer) => {
-  return authApi({ url: "/offers", data: offer, method: "POST" }).then(
-    (res) => res.data,
-  );
+const createOffer = async (offer) => {
+  console.log(offer);
+  return await authApi({ url: "/offers/", data: offer, method: "POST" });
 };
 
-export const useAddOffer = () => {
-  return useMutation({
-    mutationFn: (offer) => addOffer(offer),
-    onSuccess: (data) => {
-      client.invalidateQueries("offers");
+export const useCreateOffer = () => {
+  return useMutation(createOffer, {
+    onSuccess: (res) => {
+      console.log(res.data);
+      client.invalidateQueries("Offers");
     },
+    onError: (err) => console.log(err.message),
   });
 };
