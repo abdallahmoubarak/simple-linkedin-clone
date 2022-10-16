@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./app.css";
+import Modal from "./components/Modal";
+import Notifications from "./components/Notifications";
 import CompanyPage from "./components/Pages/CompanyPage";
 import PersonalPage from "./components/Pages/PersonalPage";
 import ProfilePage from "./components/Pages/ProfilePage";
@@ -41,6 +43,9 @@ function App() {
           </>
         )}
       </div>
+      <Modal setOpenModal={setOpenModal} openModal={openModal}>
+        <Notifications />
+      </Modal>
     </div>
   );
 }
