@@ -22,13 +22,7 @@ export default function PersonalPage({ currentUser }) {
       </div>
       <div className="cards-container">
         {filteredOffers?.map((offer, i) => (
-          <ClientOfferCard
-            key={i}
-            title={offer.title}
-            requirments={offer.requirments}
-            companyName={offer.company_name}
-            imgUrl={offer.profile_img}
-          />
+          <ClientOfferCard key={i} offer={offer} />
         ))}
       </div>
     </>
