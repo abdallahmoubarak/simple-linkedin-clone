@@ -7,13 +7,13 @@ import { useCreateOffer } from "../hooks/useOfferData";
 import Button from "./Button";
 import Input from "./Input";
 
-export default function EmptyCompanyOfferCard() {
+export default function EmptyCompanyOfferCard({ setAddOffer }) {
   const [title, setTitle] = useState("");
   const [requirments, setRequirments] = useState([]);
   const [requirment, setRequirment] = useState("");
   const [description, setDescription] = useState("");
 
-  const { mutate: createOffer } = useCreateOffer();
+  const { mutate: createOffer } = useCreateOffer({ setAddOffer });
 
   return (
     <div className="offer-card">
@@ -61,7 +61,13 @@ export default function EmptyCompanyOfferCard() {
           <Button
             text="Create the offer"
             font="1rem"
-            onClick={() => createOffer({ title, requirments, description })}
+            onClick={() => {
+              createOffer({
+                title: title,
+                requirments: requirments,
+                description: description,
+              });
+            }}
           />
         </div>
       </div>
