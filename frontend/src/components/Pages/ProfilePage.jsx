@@ -5,13 +5,17 @@ import Button from "../Button";
 import Input from "../Input";
 import UploadImage from "../UploadImage";
 import Education from "../Education";
+import Experiences from "../Experiences";
 
-export default function ProfilePage({ setProfile }) {
-  const [name, setName] = useState("");
+export default function ProfilePage({ setProfile, currentUser }) {
+  const [name, setName] = useState(currentUser?.name || "");
   const [phone, setPhone] = useState("");
   const [bio, setBio] = useState("");
-  const [skills, setSkills] = useState(["React"]);
-  const [educations, setEducations] = useState(defaultEducations);
+  const [skills, setSkills] = useState(currentUser?.skills || []);
+  const [educations, setEducations] = useState(currentUser?.educations || []);
+  const [experiences, setExperiences] = useState(
+    currentUser?.experiences || [],
+  );
 
   return (
     <>
@@ -37,6 +41,10 @@ export default function ProfilePage({ setProfile }) {
         <div className="profile-abilities-container">
           <Skills skills={skills} setSkills={setSkills} />
           <Education educations={educations} setEducations={setEducations} />
+          <Experiences
+            experiences={experiences}
+            setExperiences={setExperiences}
+          />
 
           <div className="profile-btn-container">
             <Button text="Save" />
@@ -46,12 +54,3 @@ export default function ProfilePage({ setProfile }) {
     </>
   );
 }
-
-const defaultEducations = [
-  {
-    school: "University of Isfahan",
-    degree: "Masters degree of Medical Information Systems",
-    started_date: "12-5-2017",
-    ended_date: "20-7-2020",
-  },
-];

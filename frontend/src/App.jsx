@@ -29,7 +29,7 @@ function App() {
       )}
       <div className="app-body">
         {profile ? (
-          <ProfilePage setProfile={setProfile} />
+          <ProfilePage setProfile={setProfile} currentUser={currentUser} />
         ) : (
           <>
             {currentUser?.type === "Company" && (

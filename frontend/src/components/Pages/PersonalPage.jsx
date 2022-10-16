@@ -3,7 +3,7 @@ import { useFetchOffers } from "../../hooks/useOfferData";
 import filter from "../../util/search";
 import ClientOfferCard from "../ClientOfferCard";
 
-export default function PersonalPage() {
+export default function PersonalPage({ currentUser }) {
   const { data: offers } = useFetchOffers();
   const [search, setSearch] = useState("");
 
