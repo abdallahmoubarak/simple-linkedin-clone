@@ -21,9 +21,11 @@ export default function PersonalPage({ currentUser }) {
         />
       </div>
       <div className="cards-container">
-        {filteredOffers?.map((offer, i) => (
-          <ClientOfferCard key={i} offer={offer} />
-        ))}
+        {filteredOffers
+          ?.map((offer, i) => (
+            <ClientOfferCard key={i} offer={offer} currentUser={currentUser} />
+          ))
+          .reverse()}
       </div>
     </>
   );

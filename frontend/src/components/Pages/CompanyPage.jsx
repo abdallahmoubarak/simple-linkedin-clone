@@ -18,11 +18,11 @@ export default function CompanyPage({ currentUser }) {
               onClick={() => setAddOffer(!addOffer)}
             />
           </div>
-          {addOffer && <EmptyCompanyOfferCard />}
+          {addOffer && <EmptyCompanyOfferCard setAddOffer={setAddOffer} />}
         </div>
         <div className="cards-container">
           <div className="offer-card-title">Past Job Offers</div>
-          {offers?.map((offer, i) => (
+          {offers?.reverse()?.map((offer, i) => (
             <CompanyOfferCard key={i} offer={offer} />
           ))}
         </div>{" "}
