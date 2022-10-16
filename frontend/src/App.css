@@ -298,8 +298,14 @@ textarea {
 }
 .user-options-container {
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
   align-items: center;
+}
+
+.bell {
+  font-size: 2rem;
+  color: gray;
+  padding-top: 0.6rem;
 }
 
 .profile-img {
