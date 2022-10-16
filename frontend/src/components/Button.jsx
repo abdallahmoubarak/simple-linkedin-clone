@@ -1,4 +1,4 @@
-export default function Button({ text = "click", onClick, dark }) {
+export default function Button({ text = "click", onClick, dark, font }) {
   return (
     <>
       <button onClick={onClick}>{text}</button>
@@ -8,7 +8,7 @@ export default function Button({ text = "click", onClick, dark }) {
           color: ${dark ? "#0072b1" : "white"};
           padding: 0.6rem 3rem;
           border-radius: 30rem;
-          font-size: 1.2rem;
+          font-size: ${font || "1.2rem"};
           border: none;
           cursor: pointer;
           font-weight: 600;
