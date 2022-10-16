@@ -15,6 +15,17 @@ export const useFetchOffers = () => {
   });
 };
 
+const getOwnOffers = async (id) => {
+  const res = await authApi.get(`/offers/${id}`);
+  return res.data;
+};
+
+export const useFetchOwnOffers = (id) => {
+  return useQuery(["Offers"], () => getOwnOffers(id), {
+    refetchOnWindowFocus: false,
+  });
+};
+
 const addOffer = (offer) => {
   return authApi({ url: "/offers", data: offer, method: "POST" }).then(
     (res) => res.data,
