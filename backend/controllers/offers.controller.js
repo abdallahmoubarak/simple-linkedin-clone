@@ -61,4 +61,20 @@ const getNotifications = async (req, res) => {
   }
 };
 
-module.exports = { createJobOffer, getJobOffers, getNotifications };
+const getOwnOffers = async (req, res) => {
+  try {
+    const offers = await Offer.find({ company_id: req?.user.id }).exec();
+    res.json(offers);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
+module.exports = {
+  createJobOffer,
+  getJobOffers,
+  getNotifications,
+  getOwnOffers,
+};
