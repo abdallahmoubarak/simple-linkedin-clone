@@ -11,8 +11,8 @@ const companyMiddleware = require("../middleware/company.middleware");
 const router = Router();
 
 router.post("/", companyMiddleware, createJobOffer);
-router.get("/", authMiddleware, getJobOffers);
 router.get("/notifications", authMiddleware, getNotifications);
-router.get("/:id", authMiddleware, getOwnOffers);
+router.get("/own", authMiddleware, getOwnOffers);
+router.get("/", authMiddleware, getJobOffers);
 
 module.exports = router;
