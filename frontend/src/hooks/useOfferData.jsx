@@ -10,6 +10,7 @@ const getOffers = async () => {
 export const useFetchOffers = () => {
   return useQuery({
     queryFn: () => getOffers(),
+    queryKey: "Offers",
     refetchOnWindowFocus: false,
   });
 };
