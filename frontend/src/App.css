@@ -346,9 +346,14 @@ textarea {
   max-width: 30rem;
   margin: auto;
   width: 100%;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
 }
 .offer-card-head {
-  padding: 0.6rem 1rem;
+  padding: 0.3rem 1rem;
   justify-content: space-between;
 }
 .offer-card-name {
@@ -362,6 +367,11 @@ textarea {
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
 }
 
 .offer-card-title {
@@ -423,6 +433,7 @@ textarea {
 }
 .skill-input-container {
   padding: 1rem 0rem;
+  max-width: 26rem;
 }
 
 .profile-btn-container {
@@ -435,6 +446,7 @@ textarea {
   flex-direction: column;
   gap: 0.6rem;
   padding: 1rem 0rem;
+  max-width: 26rem;
 }
 .profile-education-date {
   display: flex;

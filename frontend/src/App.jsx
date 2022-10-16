@@ -32,8 +32,12 @@ function App() {
           <ProfilePage setProfile={setProfile} />
         ) : (
           <>
-            {currentUser?.type === "Company" && <CompanyPage />}
-            {currentUser?.type === "Personal" && <PersonalPage />}
+            {currentUser?.type === "Company" && (
+              <CompanyPage currentUser={currentUser} />
+            )}
+            {currentUser?.type === "Personal" && (
+              <PersonalPage currentUser={currentUser} />
+            )}
           </>
         )}
       </div>
