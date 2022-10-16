@@ -410,6 +410,9 @@ textarea {
   font-size: 1.4rem;
   font-weight: bold;
 }
+.offer-card-date {
+  color: gray;
+}
 .offer-card-btn-container {
   align-self: flex-end;
 }

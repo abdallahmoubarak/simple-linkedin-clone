@@ -1,6 +1,12 @@
+import { useApply } from "../hooks/useOfferData";
+import { useFollow } from "../hooks/useUserData";
+import dateConvertor from "../util/dateConvertor";
 import Button from "./Button";
 
-export default function ClientOfferCard({ offer }) {
+export default function ClientOfferCard({ offer, currentUser }) {
+  const { mutate: apply } = useApply();
+  const { mutate: follow } = useFollow();
+
   return (
     <div className="offer-card">
       <div className="offer-card-head flex">
@@ -8,10 +14,21 @@ export default function ClientOfferCard({ offer }) {
           <div className="profile-img">{offer.profile_url}</div>
           <div className="offer-card-name">{offer.company_name}</div>
         </div>
-        <div className="pointer">Follow</div>
+        <div
+          className="pointer"
+          onClick={() => follow({ id: offer?.company_id })}>
+          {currentUser?.follows?.includes(offer?.company_id)
+            ? "Un Follow"
+            : "Follow"}
+        </div>
       </div>
       <div className="offer-card-body">
-        <div className="offer-card-title">Job title: {offer.title}</div>
+        <div>
+          <div className="offer-card-title">Job title: {offer.title}</div>
+          <div className="offer-card-date">
+            Posted at: {dateConvertor(offer?.created_at)}
+          </div>
+        </div>
         <div className="offer-card-description">{offer.description}</div>
         <div className="offer-card-title">Requirments</div>
         <div className="offer-card-requirments">
@@ -20,7 +37,16 @@ export default function ClientOfferCard({ offer }) {
           ))}
         </div>
         <div className="offer-card-btn-container">
-          <Button text="Easy apply" font="1rem" />
+          <Button
+            text={
+              offer?.applicants.includes(currentUser?._id)
+                ? "Applied"
+                : "Easy apply"
+            }
+            dark={offer?.applicants.includes(currentUser?._id) ? true : false}
+            font="1rem"
+            onClick={() => apply({ id: offer?._id })}
+          />
         </div>
       </div>
     </div>
