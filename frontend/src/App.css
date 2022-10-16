@@ -575,12 +575,17 @@ textarea {
 }
 .company-page {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 30rem;
+  gap: 2rem;
+  margin: auto;
 }
 
 .add-offer-container {
   max-width: 26rem;
-  flex: 1 1 26rem;
+  width: 100%;
 }
 
 .add-offer-btn {
