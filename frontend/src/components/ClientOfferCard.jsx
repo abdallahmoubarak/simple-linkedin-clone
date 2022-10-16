@@ -5,12 +5,13 @@ export default function ClientOfferCard({
   description,
   companyName,
   requirments,
+  imgUrl,
 }) {
   return (
     <div className="offer-card">
       <div className="offer-card-head flex">
         <div className="flex">
-          <div className="profile-img">img</div>
+          <div className="profile-img">{imgUrl}</div>
           <div className="offer-card-name">{companyName}</div>
         </div>
         <div className="pointer">Follow</div>
