@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useFetchOffers } from "../../hooks/useOfferData";
+import filter from "../../util/search";
 import ClientOfferCard from "../ClientOfferCard";
 
 export default function PersonalPage() {
   const { data: offers } = useFetchOffers();
   const [search, setSearch] = useState("");
+
+  let filteredOffers = offers;
+  if (offers && !!search) filteredOffers = filter(offers, search, searchFields);
 
   return (
     <>
@@ -17,7 +21,7 @@ export default function PersonalPage() {
         />
       </div>
       <div className="cards-container">
-        {offers?.map((offer, i) => (
+        {filteredOffers?.map((offer, i) => (
           <ClientOfferCard
             key={i}
             title={offer.title}
@@ -39,3 +43,4 @@ export default function PersonalPage() {
     </>
   );
 }
+const searchFields = ["company_name", "title"];
