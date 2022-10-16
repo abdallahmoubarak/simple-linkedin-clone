@@ -2,8 +2,6 @@ import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import Skills from "../Skills";
 import Button from "../Button";
-import Input from "../Input";
-import UploadImage from "../UploadImage";
 import Education from "../Education";
 import Experiences from "../Experiences";
 import { authApi } from "../../util/axiosInstance";
