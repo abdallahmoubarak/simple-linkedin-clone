@@ -9,8 +9,8 @@ import Experiences from "../Experiences";
 
 export default function ProfilePage({ setProfile, currentUser }) {
   const [name, setName] = useState(currentUser?.name || "");
-  const [phone, setPhone] = useState("");
-  const [bio, setBio] = useState("");
+  const [phone, setPhone] = useState(currentUser?.phone || "");
+  const [bio, setBio] = useState(currentUser?.bio || "");
   const [skills, setSkills] = useState(currentUser?.skills || []);
   const [educations, setEducations] = useState(currentUser?.educations || []);
   const [experiences, setExperiences] = useState(
