@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const offerSchema = new mongoose.Schema({
   company_id: { type: String },
   company_name: { type: String },
+  profile_url: { type: String },
   title: { type: String },
   description: { type: String },
   requirments: { type: [String] },
