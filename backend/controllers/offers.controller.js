@@ -40,7 +40,10 @@ const getJobOffers = async (req, res) => {
   try {
     const offers = await Offer.find().exec();
 
-    res.json(offers);
+    res.json({
+      status: "success",
+      offers,
+    });
   } catch (err) {
     res.status(400).json({
       message: err.message,
@@ -53,7 +56,10 @@ const getNotifications = async (req, res) => {
     const ids = req.user.follows;
     const offers = await Offer.find().where("_id").in(ids).exec();
 
-    res.json(offers);
+    res.json({
+      status: "success",
+      offers,
+    });
   } catch (err) {
     res.status(400).json({
       message: err.message,
@@ -63,8 +69,11 @@ const getNotifications = async (req, res) => {
 
 const getOwnOffers = async (req, res) => {
   try {
-    const offers = await Offer.find({ company_id: req?.user.id }).exec();
-    res.json(offers);
+    const offers = await Offer.find({ company_id: req.user._id }).exec();
+    res.json({
+      status: "success",
+      offers,
+    });
   } catch (err) {
     res.status(400).json({
       message: err.message,
