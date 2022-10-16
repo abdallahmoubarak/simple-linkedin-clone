@@ -21,11 +21,11 @@ const createJobOffer = async (req, res) => {
     offer.company_name = company.name;
     offer.title = title;
     offer.description = description;
-    offer.requirments = JSON.parse(requirments);
+    offer.requirments = requirments;
 
     await offer.save();
 
-    res.json({
+    res.status(200).json({
       status: "success",
       offer,
     });
@@ -40,7 +40,7 @@ const getJobOffers = async (req, res) => {
   try {
     const offers = await Offer.find().exec();
 
-    res.json({
+    res.status(200).json({
       status: "success",
       offers,
     });
@@ -56,7 +56,7 @@ const getNotifications = async (req, res) => {
     const ids = req.user.follows;
     const offers = await Offer.find().where("_id").in(ids).exec();
 
-    res.json({
+    res.status(200).json({
       status: "success",
       offers,
     });
@@ -81,9 +81,29 @@ const getOwnOffers = async (req, res) => {
   }
 };
 
+const applyOffer = async (req, res) => {
+  try {
+    const offer = await Offer.findById(req.body.id).exec();
+
+    if (offer.applicants.includes(req.user._id)) {
+      offer.applicants.splice(offer.applicants.indexOf(req.user._id));
+    } else {
+      offer.applicants = [...offer.applicants, req.user._id];
+    }
+
+    offer.save();
+    res.status(200).json({ status: "success" });
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
 module.exports = {
   createJobOffer,
   getJobOffers,
   getNotifications,
   getOwnOffers,
+  applyOffer,
 };
