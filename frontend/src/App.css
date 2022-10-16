@@ -212,6 +212,31 @@ label {
   -o-border-radius: 20rem;
 }
 
+.input-gost {
+  width: 100%;
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  padding-top: 1.6rem;
+  border: none;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+  outline: none;
+  background: transparent;
+}
+.label-gost {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  top: 0.2rem;
+  transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+}
+
 /***************** sign ******************/
 
 h1 {
@@ -384,13 +409,23 @@ textarea {
 
 /* ****************Profile************** */
 
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
 .back-to-home {
+  padding-bottom: 1rem;
+}
+
+.edit-mode {
+  width: 11rem;
   padding-bottom: 1rem;
 }
 .profile-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
   gap: 2rem;
 }
 .profile-personal-container {
@@ -434,6 +469,16 @@ textarea {
 .skill-input-container {
   padding: 1rem 0rem;
   max-width: 26rem;
+}
+.skill-name {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.skill-icon {
+  padding-top: 0.2rem;
+  color: var(--placeholders-gray);
 }
 
 .profile-btn-container {

@@ -3,7 +3,7 @@ import Input from "./Input";
 import { IoIosRemoveCircleOutline, IoIosArrowForward } from "react-icons/io";
 import { useState } from "react";
 
-export default function Education({ educations, setEducations }) {
+export default function Education({ educations, setEducations, editMode }) {
   const [school, setSchool] = useState("");
   const [degree, setDegree] = useState("");
   const [startedDate, setStartedDate] = useState("");
@@ -37,47 +37,49 @@ export default function Education({ educations, setEducations }) {
             </div>
           ))}
         </div>
-        <div className="profile-education-inputs">
-          <Input name="Degree" value={degree} setValue={setDegree} />
-          <Input
-            name="School or university"
-            value={school}
-            setValue={setSchool}
-          />
-          <div className="profile-education-date">
+        {editMode && (
+          <div className="profile-education-inputs">
+            <Input name="Degree" value={degree} setValue={setDegree} />
             <Input
-              name="Started date"
-              type={"date"}
-              value={startedDate}
-              setValue={setStartedDate}
+              name="School or university"
+              value={school}
+              setValue={setSchool}
             />
-            <Input
-              name="Ended date"
-              type={"date"}
-              value={endedDate}
-              setValue={setEndedDate}
+            <div className="profile-education-date">
+              <Input
+                name="Started date"
+                type={"date"}
+                value={startedDate}
+                setValue={setStartedDate}
+              />
+              <Input
+                name="Ended date"
+                type={"date"}
+                value={endedDate}
+                setValue={setEndedDate}
+              />
+            </div>
+            <Button
+              dark={true}
+              text="Add"
+              onClick={() => {
+                setEducations([
+                  ...educations,
+                  {
+                    school,
+                    degree,
+                    started_date: startedDate,
+                    ended_date: endedDate,
+                  },
+                ]);
+                setSchool("");
+                setDegree("");
+                setStartedDate("");
+                setEndedDate("");
+              }}
             />
           </div>
-          <Button
-            dark={true}
-            text="Add"
-            onClick={() => {
-              setEducations([
-                ...educations,
-                {
-                  school,
-                  degree,
-                  started_date: startedDate,
-                  ended_date: endedDate,
-                },
-              ]);
-              setSchool("");
-              setDegree("");
-              setStartedDate("");
-              setEndedDate("");
-            }}
-          />
-        </div>
+        )}
       </div>
     </>
   );

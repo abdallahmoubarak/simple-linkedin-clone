@@ -3,7 +3,7 @@ import Input from "./Input";
 import { IoIosRemoveCircleOutline, IoIosArrowForward } from "react-icons/io";
 import { useState } from "react";
 
-export default function Experiences({ experiences, setExperiences }) {
+export default function Experiences({ experiences, setExperiences, editMode }) {
   const [company, setCompany] = useState("");
   const [title, setTitle] = useState("");
   const [startedDate, setStartedDate] = useState("");
@@ -37,43 +37,45 @@ export default function Experiences({ experiences, setExperiences }) {
             </div>
           ))}
         </div>
-        <div className="profile-education-inputs">
-          <Input name="Title" value={title} setValue={setTitle} />
-          <Input name="Company name" value={company} setValue={setCompany} />
-          <div className="profile-education-date">
-            <Input
-              name="Started date"
-              type={"date"}
-              value={startedDate}
-              setValue={setStartedDate}
-            />
-            <Input
-              name="Ended date"
-              type={"date"}
-              value={endedDate}
-              setValue={setEndedDate}
+        {editMode && (
+          <div className="profile-education-inputs">
+            <Input name="Title" value={title} setValue={setTitle} />
+            <Input name="Company name" value={company} setValue={setCompany} />
+            <div className="profile-education-date">
+              <Input
+                name="Started date"
+                type={"date"}
+                value={startedDate}
+                setValue={setStartedDate}
+              />
+              <Input
+                name="Ended date"
+                type={"date"}
+                value={endedDate}
+                setValue={setEndedDate}
+              />
+            </div>
+            <Button
+              dark={true}
+              text="Add"
+              onClick={() => {
+                setExperiences([
+                  ...experiences,
+                  {
+                    company,
+                    title,
+                    started_date: startedDate,
+                    ended_date: endedDate,
+                  },
+                ]);
+                setCompany("");
+                setTitle("");
+                setStartedDate("");
+                setEndedDate("");
+              }}
             />
           </div>
-          <Button
-            dark={true}
-            text="Add"
-            onClick={() => {
-              setExperiences([
-                ...experiences,
-                {
-                  company,
-                  title,
-                  started_date: startedDate,
-                  ended_date: endedDate,
-                },
-              ]);
-              setCompany("");
-              setTitle("");
-              setStartedDate("");
-              setEndedDate("");
-            }}
-          />
-        </div>
+        )}
       </div>
     </>
   );

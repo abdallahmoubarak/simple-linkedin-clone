@@ -8,6 +8,7 @@ import Education from "../Education";
 import Experiences from "../Experiences";
 import { authApi } from "../../util/axiosInstance";
 import { client } from "../..";
+import PersonalInfo from "../PersonalInfo";
 
 export default function ProfilePage({ setProfile, currentUser }) {
   const [name, setName] = useState(currentUser?.name || "");
@@ -15,41 +16,60 @@ export default function ProfilePage({ setProfile, currentUser }) {
   const [bio, setBio] = useState(currentUser?.bio || "");
   const [skills, setSkills] = useState(currentUser?.skills || []);
   const [educations, setEducations] = useState(currentUser?.educations || []);
+  const [editMode, setEditMode] = useState(false);
   const [experiences, setExperiences] = useState(
     currentUser?.experiences || [],
   );
 
   return (
     <>
+      <div className="profile-header">
+        <div className="back-to-home pointer" onClick={() => setProfile(false)}>
+          <IoIosArrowBack />
+          <span>Back to home</span>
+        </div>
+
+        <div className="edit-mode">
+          <Button
+            text={editMode ? "Cancel" : "Edit"}
+            dark={true}
+            onClick={() => setEditMode(!editMode)}
+          />
+        </div>
+      </div>
       <div className="profile-container">
         <div className="profile-personal-container">
-          <div
-            className="back-to-home pointer"
-            onClick={() => setProfile(false)}>
-            <IoIosArrowBack />
-            <span>Back to home</span>
-          </div>
-          <UploadImage />
-          <div className="inputs-container">
-            <Input name="Name" value={name} setValue={setName} />
-            <Input name="Phone" value={phone} setValue={setPhone} />
-            <textarea
-              placeholder="Bio"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-            />
-            <div className="profile-btn-container">
-              <Button text="Save" />
-            </div>
-          </div>
+          <PersonalInfo
+            name={name}
+            setName={setName}
+            phone={phone}
+            setPhone={setPhone}
+            bio={bio}
+            setBio={setBio}
+            setEditMode={setEditMode}
+            editMode={editMode}
+          />
         </div>
         <div className="profile-abilities-container">
-          <Skills skills={skills} setSkills={setSkills} />
-          <Education educations={educations} setEducations={setEducations} />
-          <Experiences
-            experiences={experiences}
-            setExperiences={setExperiences}
-          />
+          {currentUser.type === "Personal" && (
+            <>
+              <Skills
+                skills={skills}
+                setSkills={setSkills}
+                editMode={editMode}
+              />
+              <Education
+                educations={educations}
+                setEducations={setEducations}
+                editMode={editMode}
+              />
+              <Experiences
+                experiences={experiences}
+                setExperiences={setExperiences}
+                editMode={editMode}
+              />
+            </>
+          )}
 
           <div className="profile-btn-container">
             <Button
