@@ -193,6 +193,24 @@ label {
   width: 100%;
 }
 
+.search-container {
+  max-width: 30rem;
+  margin: auto;
+  padding-bottom: 2rem;
+}
+
+.search {
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  border: 1px solid gray;
+  width: 100%;
+  border-radius: 20rem;
+  -webkit-border-radius: 20rem;
+  -moz-border-radius: 20rem;
+  -ms-border-radius: 20rem;
+  -o-border-radius: 20rem;
+}
+
 /***************** sign ******************/
 
 h1 {
