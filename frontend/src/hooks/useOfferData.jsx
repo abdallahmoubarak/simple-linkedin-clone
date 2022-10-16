@@ -28,17 +28,31 @@ export const useFetchOwnOffers = () => {
   });
 };
 
-const createOffer = async (offer) => {
-  console.log(offer);
-  return await authApi({ url: "/offers/", data: offer, method: "POST" });
+const createOffer = (offer) => {
+  return authApi({ url: "/offers/", data: offer, method: "POST" }).then(
+    (res) => res.data,
+  );
 };
 
-export const useCreateOffer = () => {
+export const useCreateOffer = ({ setAddOffer }) => {
   return useMutation(createOffer, {
+    onSuccess: (data) => {
+      client.invalidateQueries("Offers");
+      if (data.status === "success") {
+        setAddOffer(false);
+      }
+    },
+  });
+};
+
+const apply = async (id) => {
+  return await authApi({ url: "/offers/", data: id, method: "PUT" });
+};
+
+export const useApply = () => {
+  return useMutation(apply, {
     onSuccess: (res) => {
-      console.log(res.data);
       client.invalidateQueries("Offers");
     },
-    onError: (err) => console.log(err.message),
   });
 };
