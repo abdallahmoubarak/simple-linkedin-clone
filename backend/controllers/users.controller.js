@@ -14,8 +14,24 @@ const getUser = async (req, res) => {
 const updateUser = async (req, res) => {
   res.json({ message: "wait for it" });
 };
+
 const followCompany = async (req, res) => {
-  res.json({ message: "wait for it" });
+  try {
+    const user = await User.findById(req.user._id).exec();
+
+    if (user?.follows?.includes(req.body.id)) {
+      user.follows?.splice(user.follows.indexOf(req.body.id));
+    } else {
+      user.follows = [...user.follows, req.body.id];
+    }
+
+    user.save();
+    res.status(200).json({ status: "success" });
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
 };
 
 const getCurrentUser = async (req, res) => {

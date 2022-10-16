@@ -10,7 +10,7 @@ const router = Router();
 
 router.get("/current", authMiddleware, getCurrentUser);
 router.get("/:id", authMiddleware, getUser);
+router.put("/follow", authMiddleware, followCompany);
 router.put("/", updateUser);
-router.put("/follow", followCompany);
 
 module.exports = router;
