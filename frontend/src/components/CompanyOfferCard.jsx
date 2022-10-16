@@ -1,3 +1,4 @@
+import dateConvertor from "../util/dateConvertor";
 import Button from "./Button";
 
 export default function CompanyOfferCard({ offer }) {
@@ -5,6 +6,9 @@ export default function CompanyOfferCard({ offer }) {
     <div className="offer-card">
       <div className="offer-card-head">
         <div className="offer-card-title">Job title: {offer?.title}</div>
+        <div className="offer-card-date">
+          Posted at: {dateConvertor(offer?.created_at)}
+        </div>
       </div>
       <div className="offer-card-body">
         <div className="offer-card-description">{offer?.description}</div>
@@ -20,6 +24,7 @@ export default function CompanyOfferCard({ offer }) {
             font="1rem"
           />
         </div>
+        {offer?.open && <Button text={"close"} font="1rem" />}
       </div>
     </div>
   );
