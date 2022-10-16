@@ -59,6 +59,7 @@ export default function Education({ educations, setEducations }) {
             />
           </div>
           <Button
+            dark={true}
             text="Add"
             onClick={() => {
               setEducations([

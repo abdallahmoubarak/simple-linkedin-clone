@@ -6,6 +6,8 @@ import Input from "../Input";
 import UploadImage from "../UploadImage";
 import Education from "../Education";
 import Experiences from "../Experiences";
+import { authApi } from "../../util/axiosInstance";
+import { client } from "../..";
 
 export default function ProfilePage({ setProfile, currentUser }) {
   const [name, setName] = useState(currentUser?.name || "");
@@ -36,6 +38,9 @@ export default function ProfilePage({ setProfile, currentUser }) {
               value={bio}
               onChange={(e) => setBio(e.target.value)}
             />
+            <div className="profile-btn-container">
+              <Button text="Save" />
+            </div>
           </div>
         </div>
         <div className="profile-abilities-container">
@@ -47,7 +52,16 @@ export default function ProfilePage({ setProfile, currentUser }) {
           />
 
           <div className="profile-btn-container">
-            <Button text="Save" />
+            <Button
+              text="Logout"
+              dark={true}
+              onClick={() => {
+                localStorage.removeItem("JWT");
+                authApi.defaults.headers.Authorization = null;
+                client.setQueryData(["User"], null);
+                setProfile(false);
+              }}
+            />
           </div>
         </div>
       </div>

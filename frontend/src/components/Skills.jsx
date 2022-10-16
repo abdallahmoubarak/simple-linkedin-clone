@@ -23,7 +23,7 @@ export default function Skills({ skills, setSkills }) {
         </div>
         <div className="skill-input-container">
           <Input
-            name="Add skill"
+            name="Add a skill"
             value={skill}
             setValue={setSkill}
             onKeyPress={(e) => {

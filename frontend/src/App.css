@@ -445,8 +445,14 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  padding: 1rem 0rem;
+  padding: 1rem;
   max-width: 26rem;
+  border: 1px solid var(--gray);
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  -ms-border-radius: 0.6rem;
+  -o-border-radius: 0.6rem;
 }
 .profile-education-date {
   display: flex;

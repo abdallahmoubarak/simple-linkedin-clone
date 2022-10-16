@@ -1,11 +1,13 @@
 export default function Button({ text = "click", onClick, dark, font }) {
   return (
     <>
-      <button onClick={onClick}>{text}</button>
+      <button onClick={onClick} className={dark ? "dark" : ""}>
+        {text}
+      </button>
       <style jsx="true">{`
         button {
-          background: ${dark ? "white" : "#0072b1"};
-          color: ${dark ? "#0072b1" : "white"};
+          background: #0072b1;
+          color: white;
           padding: 0.6rem 3rem;
           border-radius: 30rem;
           font-size: ${font || "1.2rem"};
@@ -16,7 +18,14 @@ export default function Button({ text = "click", onClick, dark, font }) {
           border: 1px solid #0072b1;
         }
         button:hover {
-          background: ${dark ? "#eeddff" : "#0092d1"};
+          background: #0092d1;
+        }
+        .dark {
+          background: white;
+          color: #0072b1;
+        }
+        .dark:hover {
+          background: #a1cbe2;
         }
       `}</style>
     </>

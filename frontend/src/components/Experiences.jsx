@@ -55,6 +55,7 @@ export default function Experiences({ experiences, setExperiences }) {
             />
           </div>
           <Button
+            dark={true}
             text="Add"
             onClick={() => {
               setExperiences([
