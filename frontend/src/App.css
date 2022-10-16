@@ -129,6 +129,7 @@ body {
   -o-border-radius: 0.3rem;
   position: relative;
   width: 100%;
+  flex: 1 1;
 }
 
 .input {
@@ -290,8 +291,12 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 1rem;
+  padding: 0.3rem 1rem;
   background: var(--yellowsh-gray);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid white;
 }
 .logo-container {
   height: 2.4rem;
@@ -365,4 +370,115 @@ textarea {
 }
 .offer-card-btn-container {
   align-self: flex-end;
+}
+
+/* ****************Profile************** */
+
+.back-to-home {
+  padding-bottom: 1rem;
+}
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2rem;
+}
+.profile-personal-container {
+  min-width: 16rem;
+  max-width: 20rem;
+  margin: 0 auto;
+  flex: 1 1 100%;
+}
+
+.profile-section-container {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  -ms-border-radius: 0.6rem;
+  -o-border-radius: 0.6rem;
+}
+
+.profile-abilities-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 16rem;
+  flex: 1 1;
+}
+.profile-abilities-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.skills-list {
+  max-width: 20rem;
+}
+.skill {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+.skill-input-container {
+  padding: 1rem 0rem;
+}
+
+.profile-btn-container {
+  width: 10rem;
+  padding: 1rem 0rem;
+  align-self: center;
+}
+.profile-education-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem 0rem;
+}
+.profile-education-date {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.educations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.profile-education-card {
+  box-shadow: 0px 0px 8px var(--gray);
+  background: var(--light-gray);
+  padding: 1rem;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+  position: relative;
+  font-size: 1.2rem;
+  border: 1px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.profile-education-card-title {
+  font-weight: bold;
+}
+.profile-education-card-school {
+  color: gray;
+}
+
+.profile-education-card-date {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.edu-remove {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
 }
