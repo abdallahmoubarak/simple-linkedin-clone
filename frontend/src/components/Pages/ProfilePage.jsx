@@ -15,6 +15,8 @@ export default function ProfilePage({ setProfile, currentUser }) {
   const [bio, setBio] = useState(currentUser?.bio || "");
   const [skills, setSkills] = useState(currentUser?.skills || []);
   const [educations, setEducations] = useState(currentUser?.educations || []);
+  const [image, setImage] = useState();
+  const [img64, setImg64] = useState();
   const [experiences, setExperiences] = useState(
     currentUser?.experiences || [],
   );
@@ -22,7 +24,15 @@ export default function ProfilePage({ setProfile, currentUser }) {
   const { mutate: updateUser } = useUpdateUser(setEditMode);
 
   const handleSaveBtn = () => {
-    updateUser({ name, bio, phone, skills, educations, experiences });
+    updateUser({
+      name,
+      bio,
+      phone,
+      skills,
+      educations,
+      experiences,
+      image: img64,
+    });
   };
 
   return (
@@ -52,6 +62,10 @@ export default function ProfilePage({ setProfile, currentUser }) {
             setBio={setBio}
             editMode={editMode}
             handleSaveBtn={handleSaveBtn}
+            currentUser={currentUser}
+            image={image}
+            setImage={setImage}
+            setImg64={setImg64}
           />
         </div>
         <div className="profile-abilities-container">

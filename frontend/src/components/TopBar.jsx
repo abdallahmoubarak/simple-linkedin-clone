@@ -17,7 +17,9 @@ export default function TopBar({ currentUser, setOpenModal, setProfile }) {
               </div>
               <div
                 className="profile-img pointer"
-                onClick={() => setProfile(true)}></div>
+                onClick={() => setProfile(true)}>
+                <img src={currentUser?.profile_url} alt="" />
+              </div>
             </>
           )}
         </div>

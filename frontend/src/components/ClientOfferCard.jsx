@@ -11,7 +11,9 @@ export default function ClientOfferCard({ offer, currentUser }) {
     <div className="offer-card">
       <div className="offer-card-head flex">
         <div className="flex">
-          <div className="profile-img">{offer.profile_url}</div>
+          <div className="profile-img">
+            <img className="upload-img-img" src={offer.profile_url} alt="" />
+          </div>
           <div className="offer-card-name">{offer.company_name}</div>
         </div>
         <div

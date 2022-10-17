@@ -12,10 +12,20 @@ export default function PersonalInfo({
   setBio,
   editMode,
   handleSaveBtn,
+  currentUser,
+  image,
+  setImage,
+  setImg64,
 }) {
   return (
     <>
-      <UploadImage />
+      <UploadImage
+        currentUser={currentUser}
+        editMode={editMode}
+        image={image}
+        setImage={setImage}
+        setImg64={setImg64}
+      />
       {editMode ? (
         <div className="inputs-container">
           <Input name="Name" value={name} setValue={setName} />

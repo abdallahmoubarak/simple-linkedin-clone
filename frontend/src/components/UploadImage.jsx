@@ -1,16 +1,42 @@
-export default function UploadImage() {
+export default function UploadImage({
+  currentUser,
+  editMode,
+  image,
+  setImage,
+  setImg64,
+}) {
   return (
     <>
       <div className="upload-img-container">
         <div>
           <label htmlFor="upload-img-input" className="upload-img-label">
-            <img className="upload-img-img" src={""} alt="" />
+            <img
+              className="upload-img-img"
+              src={image || currentUser.profile_url}
+              alt=""
+            />
           </label>
-          <input
-            className="upload-img-input"
-            id="upload-img-input"
-            type="file"
-          />
+          {editMode && (
+            <input
+              className="upload-img-input"
+              id="upload-img-input"
+              type="file"
+              onChange={(e) => {
+                var file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = () => {
+                  reader.readyState === 2 && setImage(reader.result);
+                  reader.readyState === 2 &&
+                    setImg64(reader.result.split("base64,")[1]);
+                };
+                if (file) {
+                  reader.readAsDataURL(file);
+                } else {
+                  setImage();
+                }
+              }}
+            />
+          )}
         </div>
       </div>
       <style jsx="true">{`
