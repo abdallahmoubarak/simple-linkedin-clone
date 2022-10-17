@@ -19,12 +19,14 @@ export default function ClientOfferCard({ applicant, handleOpenProfile }) {
         <div className="offer-card-name pointer">X</div>
       </div>
       <div className="offer-card-body">
-        <img
-          className="pdf-img pointer"
-          src="/img/pdf.svg"
-          alt=""
-          onClick={() => alert("download")}
-        />
+        <div className="pdf-container">
+          <img
+            className="pdf-img pointer"
+            src="/img/pdf.svg"
+            alt=""
+            onClick={() => alert("download")}
+          />
+        </div>
 
         <div className="offer-card-btn-container">
           <Button text={"Interview"} font="1rem" />

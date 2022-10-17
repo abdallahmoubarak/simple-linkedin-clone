@@ -14,7 +14,7 @@ export default function UploadImage({
             className={`upload-img-label ${editMode && "pointer"}`}>
             <img
               className="upload-img-img"
-              src={image || currentUser.profile_url}
+              src={image || currentUser?.profile_url}
               alt=""
             />
           </label>
@@ -23,6 +23,7 @@ export default function UploadImage({
               className="upload-img-input"
               id="upload-img-input"
               type="file"
+              accept="image/png, image/gif, image/jpeg"
               onChange={(e) => {
                 var file = e.target.files[0];
                 const reader = new FileReader();

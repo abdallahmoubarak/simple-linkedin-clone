@@ -28,18 +28,7 @@ const updateUser = async (req, res) => {
       : user.experiences;
 
     if (req.body.image) {
-      fs.promises
-        .mkdir(`public/img/${user._id}`, { recursive: true })
-        .catch(console.error);
-
-      var base64Data = req.body.image;
-      fs.writeFileSync(
-        `public/img/${user._id}/profile.png`,
-        base64Data,
-        "base64",
-        (err) => console.log(err),
-      );
-      user.profile_url = `${process.env.url}/img/${user._id}/profile.png`;
+      user.profile_url = uploadFile(req.body.image, user._id);
     }
 
     await user.save();
@@ -84,18 +73,36 @@ const getCurrentUser = async (req, res) => {
 };
 
 const getApplicants = async (req, res) => {
-  const offer = await Offer.findById(req.params?.id).exec();
+  try {
+    const offer = await Offer.findById(req.params?.id).exec();
 
-  const users = await User.find().where("_id").in(offer.applicants).exec();
+    const users = await User.find().where("_id").in(offer.applicants).exec();
 
-  res.status(200).json({
-    status: "success",
-    users: users,
-  });
+    res.status(200).json({
+      status: "success",
+      users: users,
+    });
+  } catch (err) {
+    res.status(400).json({
+      error: "Something went wrong",
+    });
+  }
+};
 
-  // try {
-  //   const users = await User.exec();
-  // } catch (err) {
+const uploadFile = (file, id) => {
+  fs.promises
+    .mkdir(`public/user/${id}`, { recursive: true })
+    .catch(console.error);
+
+  var base64Data = file;
+  fs.writeFileSync(
+    `public/user/${id}/profile.png`,
+    base64Data,
+    "base64",
+    (err) => console.log(err),
+  );
+
+  return `${process.env.url}/user/${id}/profile.png`;
 };
 
 module.exports = {

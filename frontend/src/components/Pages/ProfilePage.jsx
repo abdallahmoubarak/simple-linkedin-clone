@@ -10,6 +10,7 @@ import PersonalInfo from "../PersonalInfo";
 import { useUpdateUser } from "../../hooks/useUserData";
 import Strategy from "../Strategy";
 import ProfileHeader from "../ProfileHeader";
+import UploadResume from "../UploadResume";
 
 export default function ProfilePage({
   setProfile,
@@ -24,6 +25,7 @@ export default function ProfilePage({
   const [educations, setEducations] = useState(currentUser?.educations || []);
   const [image, setImage] = useState();
   const [img64, setImg64] = useState();
+  const [resume, setResume] = useState(currentUser?.resume_url || []);
   const [experiences, setExperiences] = useState(
     currentUser?.experiences || [],
   );
@@ -39,6 +41,7 @@ export default function ProfilePage({
       educations,
       experiences,
       image: img64,
+      resume,
     });
   };
 
@@ -84,6 +87,11 @@ export default function ProfilePage({
               <Experiences
                 experiences={experiences}
                 setExperiences={setExperiences}
+                editMode={editMode}
+              />
+              <UploadResume
+                resume={resume}
+                setResume={setResume}
                 editMode={editMode}
               />
             </>

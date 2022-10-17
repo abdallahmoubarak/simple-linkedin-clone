@@ -591,6 +591,10 @@ textarea {
   margin: auto;
 }
 
+.pdf-container {
+  padding-top: 0.3rem;
+}
+
 .pdf-img {
   box-shadow: 0px 0px 4px #888;
   border-radius: 0.6rem;

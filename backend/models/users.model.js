@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
   phone: { type: String },
   birth: { type: Date },
   profile_url: { type: String },
-  document_url: { type: String },
+  resume_url: { type: String },
   bio: { type: String },
   skills: { type: [String] },
   follows: { type: [String] },
