@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { client } from "..";
 import { authApi } from "../util/axiosInstance";
 
@@ -26,5 +26,18 @@ export const useUpdateUser = (setEditMode) => {
       client.invalidateQueries("User");
       res.status === "success" && setEditMode(false);
     },
+  });
+};
+
+const getApplicants = async (id) => {
+  const res = await authApi.get(`/users/applicants/${id}`);
+  return res.data.users;
+};
+
+export const useApplicants = (offerId) => {
+  return useQuery({
+    queryFn: () => getApplicants(offerId),
+    queryKey: "Applicants",
+    refetchOnWindowFocus: false,
   });
 };
