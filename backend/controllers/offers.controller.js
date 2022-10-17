@@ -19,6 +19,7 @@ const createJobOffer = async (req, res) => {
     const offer = new Offer();
     offer.company_id = company.id;
     offer.company_name = company.name;
+    offer.profile_url = company.profile_url;
     offer.title = title;
     offer.description = description;
     offer.requirments = requirments;

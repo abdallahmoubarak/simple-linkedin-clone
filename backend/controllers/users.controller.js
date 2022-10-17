@@ -27,6 +27,21 @@ const updateUser = async (req, res) => {
       ? req.body.experiences
       : user.experiences;
 
+    if (req.body.image) {
+      fs.promises
+        .mkdir(`public/img/${user._id}`, { recursive: true })
+        .catch(console.error);
+
+      var base64Data = req.body.image;
+      fs.writeFileSync(
+        `public/img/${user._id}/profile.png`,
+        base64Data,
+        "base64",
+        (err) => console.log(err),
+      );
+      user.profile_url = `${process.env.url}/img/${user._id}/profile.png`;
+    }
+
     await user.save();
     res.status(200).json({ user: user, status: "success" });
   } catch (err) {
