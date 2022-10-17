@@ -73,3 +73,21 @@ repo link : https://github.com/abdallahmoubarak/simple-linkedin-clone
 - Substage 4 : fitting API's in frontend (React-query)
 
 ---
+
+#### Stage 5: Presenting the project
+
+##### - Sign in process
+
+<img src='./src/signin.gif' >
+
+##### - Adding job offer
+
+<img src='./src/add_job_offer.gif' >
+
+##### - Editing profile
+
+<img src='./src/edit_profile.gif' >
+
+##### - Reviewing applicants
+
+<img src='./src/review_applicant.gif' >
