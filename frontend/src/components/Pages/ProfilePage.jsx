@@ -72,7 +72,7 @@ export default function ProfilePage({
           />
         </div>
         <div className="profile-abilities-container">
-          {currentUser.type === "Personal" && (
+          {currentUser?.type === "Personal" && (
             <>
               <Skills
                 skills={skills}
@@ -97,7 +97,7 @@ export default function ProfilePage({
             </>
           )}
 
-          {currentUser.type === "Company" && (
+          {currentUser?.type === "Company" && (
             <>
               <Strategy name="Vision" editMode={editMode} />
               <Strategy name="Mission" editMode={editMode} />

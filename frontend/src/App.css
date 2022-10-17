@@ -466,6 +466,7 @@ textarea {
   -moz-border-radius: 0.6rem;
   -ms-border-radius: 0.6rem;
   -o-border-radius: 0.6rem;
+  overflow: hidden;
 }
 
 .profile-abilities-container {

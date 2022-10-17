@@ -28,7 +28,10 @@ const updateUser = async (req, res) => {
       : user.experiences;
 
     if (req.body.image) {
-      user.profile_url = uploadFile(req.body.image, user._id);
+      user.profile_url = uploadImage(req.body.image, user._id);
+    }
+    if (req.body.resume) {
+      user.resume_url = uploadFile(req.body.resume, user._id);
     }
 
     await user.save();
@@ -89,12 +92,12 @@ const getApplicants = async (req, res) => {
   }
 };
 
-const uploadFile = (file, id) => {
+const uploadImage = (image, id) => {
   fs.promises
     .mkdir(`public/user/${id}`, { recursive: true })
     .catch(console.error);
 
-  var base64Data = file;
+  var base64Data = image;
   fs.writeFileSync(
     `public/user/${id}/profile.png`,
     base64Data,
@@ -103,6 +106,22 @@ const uploadFile = (file, id) => {
   );
 
   return `${process.env.url}/user/${id}/profile.png`;
+};
+
+const uploadFile = (file, id) => {
+  fs.promises
+    .mkdir(`public/user/${id}`, { recursive: true })
+    .catch(console.error);
+
+  var uplodedfile = file;
+  fs.writeFileSync(
+    `public/user/${id}/resume.pdf`,
+    uplodedfile,
+    "base64",
+    (err) => console.log(err),
+  );
+
+  return `${process.env.url}/user/${id}/resume.pdf`;
 };
 
 module.exports = {
