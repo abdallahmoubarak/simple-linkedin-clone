@@ -13,3 +13,18 @@ export const useFollow = () => {
     },
   });
 };
+
+const updateUser = (user) => {
+  return authApi({ url: "/users/", data: user, method: "PUT" }).then(
+    (res) => res.data,
+  );
+};
+
+export const useUpdateUser = (setEditMode) => {
+  return useMutation(updateUser, {
+    onSuccess: (res) => {
+      client.invalidateQueries("User");
+      res.status === "success" && setEditMode(false);
+    },
+  });
+};

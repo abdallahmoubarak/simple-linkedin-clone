@@ -7,6 +7,7 @@ import Experiences from "../Experiences";
 import { authApi } from "../../util/axiosInstance";
 import { client } from "../..";
 import PersonalInfo from "../PersonalInfo";
+import { useUpdateUser } from "../../hooks/useUserData";
 
 export default function ProfilePage({ setProfile, currentUser }) {
   const [name, setName] = useState(currentUser?.name || "");
@@ -14,10 +15,15 @@ export default function ProfilePage({ setProfile, currentUser }) {
   const [bio, setBio] = useState(currentUser?.bio || "");
   const [skills, setSkills] = useState(currentUser?.skills || []);
   const [educations, setEducations] = useState(currentUser?.educations || []);
-  const [editMode, setEditMode] = useState(false);
   const [experiences, setExperiences] = useState(
     currentUser?.experiences || [],
   );
+  const [editMode, setEditMode] = useState(false);
+  const { mutate: updateUser } = useUpdateUser(setEditMode);
+
+  const handleSaveBtn = () => {
+    updateUser({ name, bio, phone, skills, educations, experiences });
+  };
 
   return (
     <>
@@ -44,8 +50,8 @@ export default function ProfilePage({ setProfile, currentUser }) {
             setPhone={setPhone}
             bio={bio}
             setBio={setBio}
-            setEditMode={setEditMode}
             editMode={editMode}
+            handleSaveBtn={handleSaveBtn}
           />
         </div>
         <div className="profile-abilities-container">
