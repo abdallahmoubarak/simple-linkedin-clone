@@ -9,7 +9,9 @@ export default function UploadImage({
     <>
       <div className="upload-img-container">
         <div>
-          <label htmlFor="upload-img-input" className="upload-img-label">
+          <label
+            htmlFor="upload-img-input"
+            className={`upload-img-label ${editMode && "pointer"}`}>
             <img
               className="upload-img-img"
               src={image || currentUser.profile_url}
@@ -59,7 +61,6 @@ export default function UploadImage({
           margin: auto;
           width: 100%;
           padding: 0;
-          cursor: pointer;
         }
 
         .upload-img-input {
@@ -78,7 +79,6 @@ export default function UploadImage({
           overflow: hidden;
           padding: 0;
           z-index: 1;
-          cursor: pointer;
         }
       `}</style>
     </>

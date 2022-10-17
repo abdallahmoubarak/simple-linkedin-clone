@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSignIn, useSignUp } from "../hooks/useSign";
+import { useSignIn, useSignUp } from "../hooks/useAuth";
 import { validSign } from "../util/signValidation";
 import Button from "./Button";
 import Input from "./Input";

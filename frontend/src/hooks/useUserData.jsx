@@ -41,3 +41,17 @@ export const useApplicants = (offerId) => {
     refetchOnWindowFocus: false,
   });
 };
+
+const getUser = async (id) => {
+  const res = await authApi.get(`/users/${id}`);
+  return res.data.user;
+};
+
+export const useGetUser = ({ enabled, userId }) => {
+  return useQuery({
+    queryKey: userId,
+    queryFn: () => getUser(userId),
+    refetchOnWindowFocus: false,
+    enabled,
+  });
+};

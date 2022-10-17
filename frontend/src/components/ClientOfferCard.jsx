@@ -3,14 +3,20 @@ import { useFollow } from "../hooks/useUserData";
 import dateConvertor from "../util/dateConvertor";
 import Button from "./Button";
 
-export default function ClientOfferCard({ offer, currentUser }) {
+export default function ClientOfferCard({
+  offer,
+  currentUser,
+  handelOpenProfileById,
+}) {
   const { mutate: apply } = useApply();
   const { mutate: follow } = useFollow();
 
   return (
     <div className="offer-card">
       <div className="offer-card-head flex">
-        <div className="flex">
+        <div
+          className="flex pointer"
+          onClick={() => handelOpenProfileById(offer.company_id)}>
           <div className="profile-img">
             <img className="upload-img-img" src={offer.profile_url} alt="" />
           </div>

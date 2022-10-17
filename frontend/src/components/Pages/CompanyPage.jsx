@@ -8,17 +8,18 @@ export default function CompanyPage() {
   const [offerId, setOfferId] = useState([]);
   const [user, setUser] = useState("");
 
-  const handleOpenProfile = (user) => {
-    console.log(user);
-    setUser(user);
-  };
+  const handleOpenProfile = (user) => setUser(user);
 
   return (
     <>
       {main ? (
         <CompanyMainPage setMain={setMain} setOfferId={setOfferId} />
       ) : !!user ? (
-        <ProfilePage currentUser={user} setUser={setUser} />
+        <ProfilePage
+          currentUser={user}
+          setUser={setUser}
+          backTo={"applicants"}
+        />
       ) : (
         <ApplicantsPage
           setMain={setMain}

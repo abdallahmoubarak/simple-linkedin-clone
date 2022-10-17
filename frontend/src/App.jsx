@@ -7,7 +7,7 @@ import PersonalPage from "./components/Pages/PersonalPage";
 import ProfilePage from "./components/Pages/ProfilePage";
 import Sign from "./components/Sign";
 import TopBar from "./components/TopBar";
-import { useCurrentUser } from "./hooks/useSign";
+import { useCurrentUser } from "./hooks/useAuth";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);

@@ -9,8 +9,14 @@ import { client } from "../..";
 import PersonalInfo from "../PersonalInfo";
 import { useUpdateUser } from "../../hooks/useUserData";
 import Strategy from "../Strategy";
+import ProfileHeader from "../ProfileHeader";
 
-export default function ProfilePage({ setProfile, currentUser, setUser }) {
+export default function ProfilePage({
+  setProfile,
+  currentUser,
+  setUser,
+  backTo,
+}) {
   const [name, setName] = useState(currentUser?.name || "");
   const [phone, setPhone] = useState(currentUser?.phone || "");
   const [bio, setBio] = useState(currentUser?.bio || "");
@@ -38,31 +44,13 @@ export default function ProfilePage({ setProfile, currentUser, setUser }) {
 
   return (
     <>
-      <div className="profile-header">
-        {!!setProfile ? (
-          <>
-            <div
-              className="back-to-home pointer"
-              onClick={() => setProfile(false)}>
-              <IoIosArrowBack />
-              <span>Back to home</span>
-            </div>
-
-            <div className="edit-mode">
-              <Button
-                text={editMode ? "Cancel" : "Edit"}
-                dark={true}
-                onClick={() => setEditMode(!editMode)}
-              />
-            </div>
-          </>
-        ) : (
-          <div className="back-to-home pointer" onClick={() => setUser(false)}>
-            <IoIosArrowBack />
-            <span>Back to applicants</span>
-          </div>
-        )}
-      </div>
+      <ProfileHeader
+        setProfile={setProfile}
+        setEditMode={setEditMode}
+        editMode={editMode}
+        setUser={setUser}
+        backTo={backTo}
+      />
       <div className="profile-container">
         <div className="profile-personal-container">
           <PersonalInfo
