@@ -7,6 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ strict: false }));
+app.use(express.static("public"));
 
 const authRoutes = require("./routes/auth.routes");
 const offerRoutes = require("./routes/offers.routes");

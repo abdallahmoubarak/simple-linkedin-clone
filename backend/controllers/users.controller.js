@@ -1,4 +1,6 @@
 const User = require("../models/users.model");
+const mkdirp = require("mkdirp");
+const fs = require("fs");
 
 const getUser = async (req, res) => {
   try {
@@ -66,4 +68,38 @@ const getCurrentUser = async (req, res) => {
   }
 };
 
-module.exports = { getUser, updateUser, followCompany, getCurrentUser };
+const uploadImg = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).exec();
+
+    fs.promises
+      .mkdir(`public/img/${user._id}`, { recursive: true })
+      .catch(console.error);
+
+    var base64Data = req.body.img;
+    fs.writeFile(
+      `public/img/${user._id}/profile.png`,
+      base64Data,
+      "base64",
+      (err) => console.log(err),
+    );
+    user.profile_url = `${process.env.url}/img/${user._id}/profile.png`;
+    user.save();
+    return res.status(200).json({
+      status: "success",
+      user: user,
+    });
+  } catch (err) {
+    return res.status(400).json({
+      error: "User not found",
+    });
+  }
+};
+
+module.exports = {
+  getUser,
+  updateUser,
+  followCompany,
+  getCurrentUser,
+  uploadImg,
+};
