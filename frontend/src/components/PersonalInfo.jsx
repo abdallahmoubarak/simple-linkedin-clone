@@ -10,8 +10,8 @@ export default function PersonalInfo({
   setPhone,
   bio,
   setBio,
-  setEditMode,
   editMode,
+  handleSaveBtn,
 }) {
   return (
     <>
@@ -26,7 +26,7 @@ export default function PersonalInfo({
             onChange={(e) => setBio(e.target.value)}
           />
           <div className="profile-btn-container">
-            <Button text="Save" onClick={() => setEditMode(false)} />
+            <Button text="Save" onClick={() => handleSaveBtn()} />
           </div>
         </div>
       ) : (

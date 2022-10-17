@@ -27,13 +27,15 @@ export default function Education({ educations, setEducations, editMode }) {
                 <IoIosArrowForward />
                 <span>{education.ended_date}</span>
               </div>
-              <div
-                className="edu-remove pointer"
-                onClick={() =>
-                  setEducations(educations.filter((e) => e !== education))
-                }>
-                <IoIosRemoveCircleOutline />
-              </div>
+              {editMode && (
+                <div
+                  className="edu-remove pointer"
+                  onClick={() =>
+                    setEducations(educations.filter((e) => e !== education))
+                  }>
+                  <IoIosRemoveCircleOutline />
+                </div>
+              )}
             </div>
           ))}
         </div>

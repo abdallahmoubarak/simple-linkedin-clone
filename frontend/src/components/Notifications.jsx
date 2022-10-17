@@ -1,3 +1,7 @@
 export default function Notifications() {
-  return <>His</>;
+  return (
+    <>
+      <div className="no-notifications">You have no notifications yet</div>
+    </>
+  );
 }

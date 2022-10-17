@@ -34,12 +34,12 @@ export default function Modal({ openModal, setOpenModal, children }) {
           overflow-y: auto;
           -webkit-clip-path: circle(0% at 95% 5%);
           clip-path: circle(0% at 95% 5%);
-          -webkit-transition: -webkit-clip-path 0.5s ease-in-out;
-          transition: -webkit-clip-path 0.5s ease-in-out;
-          -o-transition: clip-path 0.5s ease-in-out;
-          transition: clip-path 0.5s ease-in-out;
-          transition: clip-path 0.5s ease-in-out,
-            -webkit-clip-path 0.5s ease-in-out;
+          -webkit-transition: -webkit-clip-path 0.3s ease-in-out;
+          transition: -webkit-clip-path 0.3s ease-in-out;
+          -o-transition: clip-path 0.3s ease-in-out;
+          transition: clip-path 0.3s ease-in-out;
+          transition: clip-path 0.3s ease-in-out,
+            -webkit-clip-path 0.3s ease-in-out;
         }
 
         .show {

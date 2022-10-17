@@ -27,13 +27,15 @@ export default function Experiences({ experiences, setExperiences, editMode }) {
                 <IoIosArrowForward />
                 <span>{experience.ended_date}</span>
               </div>
-              <div
-                className="edu-remove pointer"
-                onClick={() =>
-                  setExperiences(experiences?.filter((e) => e !== experience))
-                }>
-                <IoIosRemoveCircleOutline />
-              </div>
+              {editMode && (
+                <div
+                  className="edu-remove pointer"
+                  onClick={() =>
+                    setExperiences(experiences?.filter((e) => e !== experience))
+                  }>
+                  <IoIosRemoveCircleOutline />
+                </div>
+              )}
             </div>
           ))}
         </div>
