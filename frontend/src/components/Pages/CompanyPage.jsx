@@ -1,32 +1,30 @@
 import { useState } from "react";
-import { useFetchOwnOffers } from "../../hooks/useOfferData";
-import Button from "../Button";
-import CompanyOfferCard from "../CompanyOfferCard";
-import EmptyCompanyOfferCard from "../EmptyCompanyOfferCard";
+import ApplicantsPage from "./ApplicantsPage";
+import CompanyMainPage from "./CompanyMainPage";
+import ProfilePage from "./ProfilePage";
 
-export default function CompanyPage({ currentUser }) {
-  const { data: offers } = useFetchOwnOffers();
-  const [addOffer, setAddOffer] = useState(false);
+export default function CompanyPage() {
+  const [main, setMain] = useState(true);
+  const [offerId, setOfferId] = useState([]);
+  const [viewProfile, setViewProfile] = useState(true);
+
+  const handleOpenProfile = (id) => {
+    alert(id);
+  };
 
   return (
     <>
-      <div className="company-page">
-        <div className="add-offer-container">
-          <div className="add-offer-btn">
-            <Button
-              text={addOffer ? "Cancel" : "Add new job offer"}
-              onClick={() => setAddOffer(!addOffer)}
-            />
-          </div>
-          {addOffer && <EmptyCompanyOfferCard setAddOffer={setAddOffer} />}
-        </div>
-        <div className="cards-container">
-          <div className="offer-card-title">Past Job Offers</div>
-          {offers?.reverse()?.map((offer, i) => (
-            <CompanyOfferCard key={i} offer={offer} />
-          ))}
-        </div>{" "}
-      </div>
+      {main ? (
+        <CompanyMainPage setMain={setMain} setOfferId={setOfferId} />
+      ) : viewProfile ? (
+        <ProfilePage />
+      ) : (
+        <ApplicantsPage
+          setMain={setMain}
+          offerId={offerId}
+          handleOpenProfile={handleOpenProfile}
+        />
+      )}
     </>
   );
 }

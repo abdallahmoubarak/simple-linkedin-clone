@@ -1,7 +1,7 @@
 import dateConvertor from "../util/dateConvertor";
 import Button from "./Button";
 
-export default function CompanyOfferCard({ offer }) {
+export default function CompanyOfferCard({ offer, setMain, setOfferId }) {
   return (
     <div className="offer-card">
       <div className="offer-card-head">
@@ -22,6 +22,10 @@ export default function CompanyOfferCard({ offer }) {
           <Button
             text={`Applicants : ${offer?.applicants?.length}`}
             font="1rem"
+            onClick={() => {
+              setOfferId(offer?._id);
+              setMain(false);
+            }}
           />
         </div>
         {offer?.open && <Button text={"close"} font="1rem" />}

@@ -377,6 +377,19 @@ textarea {
   -moz-border-radius: 0.3rem;
   -ms-border-radius: 0.3rem;
   -o-border-radius: 0.3rem;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+}
+.offer-card:hover {
+  box-shadow: 0px 0px 8px #aaa;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
 }
 .offer-card-head {
   padding: 0.3rem 1rem;
@@ -563,6 +576,42 @@ textarea {
   flex-direction: column;
   gap: 1rem;
 }
+.loader {
+  width: 5rem;
+  height: 5rem;
+  margin: auto;
+}
+.no-data {
+  text-align: center;
+  font-size: 2rem;
+  color: gray;
+}
+.placeholder-img {
+  max-width: 22rem;
+  margin: auto;
+}
+
+.pdf-img {
+  box-shadow: 0px 0px 4px #888;
+  border-radius: 0.6rem;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  -ms-border-radius: 0.6rem;
+  -o-border-radius: 0.6rem;
+}
+.pdf-img:hover {
+  box-shadow: 0px 0px 12px #888;
+  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+}
 
 /* ****************Company Page******************* */
 
@@ -603,4 +652,12 @@ textarea {
   text-align: center;
   font-size: 1.2rem;
   padding: 0.6rem;
+}
+
+/* **********************Applicant page************************** */
+
+.applicant-page {
+  max-width: 30rem;
+  width: 100%;
+  margin: auto;
 }

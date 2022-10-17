@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useFetchOffers } from "../../hooks/useOfferData";
 import filter from "../../util/search";
 import ClientOfferCard from "../ClientOfferCard";
+import Loader from "../Loader";
+import NoDataPlaceholder from "../NoDataPlaceholder";
 
 export default function PersonalPage({ currentUser }) {
-  const { data: offers } = useFetchOffers();
+  const { isLoading, data: offers } = useFetchOffers();
   const [search, setSearch] = useState("");
 
   let filteredOffers = offers;
@@ -21,11 +23,21 @@ export default function PersonalPage({ currentUser }) {
         />
       </div>
       <div className="cards-container">
-        {filteredOffers
-          ?.map((offer, i) => (
-            <ClientOfferCard key={i} offer={offer} currentUser={currentUser} />
-          ))
-          .reverse()}
+        {isLoading ? (
+          <Loader />
+        ) : !!filteredOffers[0] ? (
+          filteredOffers
+            ?.map((offer, i) => (
+              <ClientOfferCard
+                key={i}
+                offer={offer}
+                currentUser={currentUser}
+              />
+            ))
+            .reverse()
+        ) : (
+          <NoDataPlaceholder name="offers" />
+        )}
       </div>
     </>
   );
