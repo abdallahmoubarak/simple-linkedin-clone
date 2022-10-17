@@ -5,7 +5,7 @@ const fs = require("fs");
 const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params?.id);
-    return res.status(200).json(user);
+    return res.status(200).json({ user: user, status: "success" });
   } catch (err) {
     return res.status(400).json({
       error: "User not found",
