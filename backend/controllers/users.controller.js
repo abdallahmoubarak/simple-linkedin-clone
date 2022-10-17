@@ -1,5 +1,5 @@
 const User = require("../models/users.model");
-const mkdirp = require("mkdirp");
+const Offer = require("../models/offers.model");
 const fs = require("fs");
 
 const getUser = async (req, res) => {
@@ -83,32 +83,19 @@ const getCurrentUser = async (req, res) => {
   }
 };
 
-const uploadImg = async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id).exec();
+const getApplicants = async (req, res) => {
+  const offer = await Offer.findById(req.params?.id).exec();
 
-    fs.promises
-      .mkdir(`public/img/${user._id}`, { recursive: true })
-      .catch(console.error);
+  const users = await User.find().where("_id").in(offer.applicants).exec();
 
-    var base64Data = req.body.img;
-    fs.writeFile(
-      `public/img/${user._id}/profile.png`,
-      base64Data,
-      "base64",
-      (err) => console.log(err),
-    );
-    user.profile_url = `${process.env.url}/img/${user._id}/profile.png`;
-    user.save();
-    return res.status(200).json({
-      status: "success",
-      user: user,
-    });
-  } catch (err) {
-    return res.status(400).json({
-      error: "User not found",
-    });
-  }
+  res.status(200).json({
+    status: "success",
+    users: users,
+  });
+
+  // try {
+  //   const users = await User.exec();
+  // } catch (err) {
 };
 
 module.exports = {
@@ -116,5 +103,5 @@ module.exports = {
   updateUser,
   followCompany,
   getCurrentUser,
-  uploadImg,
+  getApplicants,
 };
