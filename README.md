@@ -41,7 +41,7 @@
 
 Sketching a first version of ER diagram
 
-<img src='./src/LinkedIn_clone_db_v1.svg'  alt=''>
+<img src='./src/LinkedIn_clone_db_v2.svg'  alt=''>
 
 ---
 
@@ -53,13 +53,13 @@ Sketching a first version of ER diagram
 
 ##### - Figma design:
 
-<img src='./src/LinkedIn_clone_mockup_v2.svg'  alt=''>
+<img src='./src/LinkedIn_clone_mockup_v1.svg'  alt=''>
 
 ---
 
 #### Stage 3: Creating list of API's needed for the project
 
-<!-- <img src='./src/apis.png' > -->
+<img src='./src/apis.png' >
 
 ---
 
