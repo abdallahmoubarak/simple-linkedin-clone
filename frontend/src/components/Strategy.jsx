@@ -12,9 +12,9 @@ export default function Strategy({ name, editMode, currentUser }) {
           <div className="skill-input-container">
             <textarea
               placeholder={`Set a ${name}`}
-              onChange={(e) => setStrategy(e.target.value)}>
-              {strategy}
-            </textarea>
+              value={strategy}
+              onChange={(e) => setStrategy(e.target.value)}
+            />
           </div>
         )}
       </div>

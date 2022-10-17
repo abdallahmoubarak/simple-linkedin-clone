@@ -28,10 +28,10 @@ const updateUser = async (req, res) => {
       : user.experiences;
 
     if (req.body.image) {
-      user.profile_url = uploadImage(req.body.image, user._id);
+      user.profile_url = saveImage(req.body.image, user._id);
     }
     if (req.body.resume) {
-      user.resume_url = uploadFile(req.body.resume, user._id);
+      user.resume_url = saveFile(req.body.resume, user._id, user.name);
     }
 
     await user.save();
@@ -92,7 +92,7 @@ const getApplicants = async (req, res) => {
   }
 };
 
-const uploadImage = (image, id) => {
+const saveImage = (image, id) => {
   fs.promises
     .mkdir(`public/user/${id}`, { recursive: true })
     .catch(console.error);
@@ -108,20 +108,20 @@ const uploadImage = (image, id) => {
   return `${process.env.url}/user/${id}/profile.png`;
 };
 
-const uploadFile = (file, id) => {
+const saveFile = (file, id, name) => {
   fs.promises
     .mkdir(`public/user/${id}`, { recursive: true })
     .catch(console.error);
 
+  let fileName = `${name.replace(" ", "_")}_resume.pdf`;
   var uplodedfile = file;
   fs.writeFileSync(
-    `public/user/${id}/resume.pdf`,
+    `public/user/${id}/${fileName}`,
     uplodedfile,
     "base64",
     (err) => console.log(err),
   );
-
-  return `${process.env.url}/user/${id}/resume.pdf`;
+  return `${process.env.url}/user/${id}/${fileName}`;
 };
 
 module.exports = {

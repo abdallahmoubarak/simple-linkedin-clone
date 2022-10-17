@@ -10,22 +10,19 @@ export default function ClientOfferCard({ applicant, handleOpenProfile }) {
           <div className="profile-img ">
             <img
               className="upload-img-img"
-              src={applicant.profile_url}
+              src={applicant?.profile_url}
               alt=""
             />
           </div>
-          <div className="offer-card-name ">{applicant.name}</div>
+          <div className="offer-card-name ">{applicant?.name}</div>
         </div>
         <div className="offer-card-name pointer">X</div>
       </div>
       <div className="offer-card-body">
         <div className="pdf-container">
-          <img
-            className="pdf-img pointer"
-            src="/img/pdf.svg"
-            alt=""
-            onClick={() => alert("download")}
-          />
+          <a href={applicant?.resume_url} download>
+            <img className="pdf-img pointer" src="/img/pdf.svg" alt="" />
+          </a>
         </div>
 
         <div className="offer-card-btn-container">

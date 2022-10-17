@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { IoIosArrowBack } from "react-icons/io";
 import Skills from "../Skills";
 import Button from "../Button";
 import Education from "../Education";
