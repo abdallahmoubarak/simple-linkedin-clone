@@ -12,7 +12,26 @@ const getUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  res.json({ message: "wait for it" });
+  try {
+    const user = await User.findById(req.user._id).exec();
+    user.name = req.body.name ? req.body.name : user.name;
+    user.phone = req.body.phone ? req.body.phone : user.phone;
+    user.bio = req.body.bio ? req.body.bio : user.bio;
+    user.skills = req.body.skills ? req.body.skills : user.skills;
+    user.educations = req.body.educations
+      ? req.body.educations
+      : user.educations;
+    user.experiences = req.body.experiences
+      ? req.body.experiences
+      : user.experiences;
+
+    await user.save();
+    res.status(200).json({ user: user, status: "success" });
+  } catch (err) {
+    return res.status(400).json({
+      error: "Something went wrong",
+    });
+  }
 };
 
 const followCompany = async (req, res) => {
