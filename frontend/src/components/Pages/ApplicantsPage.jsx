@@ -9,7 +9,7 @@ export default function ApplicantsPage({
   offerId,
   handleOpenProfile,
 }) {
-  const { isLoading, data: applicants } = useApplicants(offerId);
+  const { isFetching, data: applicants } = useApplicants(offerId);
 
   return (
     <>
@@ -18,7 +18,7 @@ export default function ApplicantsPage({
           <IoIosArrowBack />
           <span>Back to home</span>
         </div>
-        {isLoading ? (
+        {isFetching ? (
           <Loader />
         ) : !!applicants[0] ? (
           <div className="cards-container">

@@ -6,18 +6,19 @@ import ProfilePage from "./ProfilePage";
 export default function CompanyPage() {
   const [main, setMain] = useState(true);
   const [offerId, setOfferId] = useState([]);
-  const [viewProfile, setViewProfile] = useState(true);
+  const [user, setUser] = useState("");
 
-  const handleOpenProfile = (id) => {
-    alert(id);
+  const handleOpenProfile = (user) => {
+    console.log(user);
+    setUser(user);
   };
 
   return (
     <>
       {main ? (
         <CompanyMainPage setMain={setMain} setOfferId={setOfferId} />
-      ) : viewProfile ? (
-        <ProfilePage />
+      ) : !!user ? (
+        <ProfilePage currentUser={user} setUser={setUser} />
       ) : (
         <ApplicantsPage
           setMain={setMain}

@@ -6,7 +6,7 @@ export default function ClientOfferCard({ applicant, handleOpenProfile }) {
       <div className="offer-card-head flex">
         <div
           className="flex pointer"
-          onClick={() => handleOpenProfile(applicant._id)}>
+          onClick={() => handleOpenProfile(applicant)}>
           <div className="profile-img ">
             <img
               className="upload-img-img"
@@ -19,7 +19,12 @@ export default function ClientOfferCard({ applicant, handleOpenProfile }) {
         <div className="offer-card-name pointer">X</div>
       </div>
       <div className="offer-card-body">
-        <img className="pdf-img pointer" src="/img/pdf.svg" alt="" />
+        <img
+          className="pdf-img pointer"
+          src="/img/pdf.svg"
+          alt=""
+          onClick={() => alert("download")}
+        />
 
         <div className="offer-card-btn-container">
           <Button text={"Interview"} font="1rem" />

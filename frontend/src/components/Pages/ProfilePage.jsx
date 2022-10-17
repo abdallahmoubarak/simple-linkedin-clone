@@ -9,7 +9,7 @@ import { client } from "../..";
 import PersonalInfo from "../PersonalInfo";
 import { useUpdateUser } from "../../hooks/useUserData";
 
-export default function ProfilePage({ setProfile, currentUser }) {
+export default function ProfilePage({ setProfile, currentUser, setUser }) {
   const [name, setName] = useState(currentUser?.name || "");
   const [phone, setPhone] = useState(currentUser?.phone || "");
   const [bio, setBio] = useState(currentUser?.bio || "");
@@ -38,18 +38,29 @@ export default function ProfilePage({ setProfile, currentUser }) {
   return (
     <>
       <div className="profile-header">
-        <div className="back-to-home pointer" onClick={() => setProfile(false)}>
-          <IoIosArrowBack />
-          <span>Back to home</span>
-        </div>
+        {!!setProfile ? (
+          <>
+            <div
+              className="back-to-home pointer"
+              onClick={() => setProfile(false)}>
+              <IoIosArrowBack />
+              <span>Back to home</span>
+            </div>
 
-        <div className="edit-mode">
-          <Button
-            text={editMode ? "Cancel" : "Edit"}
-            dark={true}
-            onClick={() => setEditMode(!editMode)}
-          />
-        </div>
+            <div className="edit-mode">
+              <Button
+                text={editMode ? "Cancel" : "Edit"}
+                dark={true}
+                onClick={() => setEditMode(!editMode)}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="back-to-home pointer" onClick={() => setUser(false)}>
+            <IoIosArrowBack />
+            <span>Back to applicants</span>
+          </div>
+        )}
       </div>
       <div className="profile-container">
         <div className="profile-personal-container">
@@ -90,16 +101,18 @@ export default function ProfilePage({ setProfile, currentUser }) {
           )}
 
           <div className="profile-btn-container">
-            <Button
-              text="Logout"
-              dark={true}
-              onClick={() => {
-                localStorage.removeItem("JWT");
-                authApi.defaults.headers.Authorization = null;
-                client.setQueryData(["User"], null);
-                setProfile(false);
-              }}
-            />
+            {!!setProfile && (
+              <Button
+                text="Logout"
+                dark={true}
+                onClick={() => {
+                  localStorage.removeItem("JWT");
+                  authApi.defaults.headers.Authorization = null;
+                  client.setQueryData(["User"], null);
+                  setProfile(false);
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
