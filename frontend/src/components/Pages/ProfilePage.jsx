@@ -8,6 +8,7 @@ import { authApi } from "../../util/axiosInstance";
 import { client } from "../..";
 import PersonalInfo from "../PersonalInfo";
 import { useUpdateUser } from "../../hooks/useUserData";
+import Strategy from "../Strategy";
 
 export default function ProfilePage({ setProfile, currentUser, setUser }) {
   const [name, setName] = useState(currentUser?.name || "");
@@ -97,6 +98,15 @@ export default function ProfilePage({ setProfile, currentUser, setUser }) {
                 setExperiences={setExperiences}
                 editMode={editMode}
               />
+            </>
+          )}
+
+          {currentUser.type === "Company" && (
+            <>
+              <Strategy name="Vision" editMode={editMode} />
+              <Strategy name="Mission" editMode={editMode} />
+              <Strategy name="Goals" editMode={editMode} />
+              <Strategy name="Address" editMode={editMode} />
             </>
           )}
 
