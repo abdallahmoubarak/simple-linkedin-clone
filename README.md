@@ -63,7 +63,7 @@ Sketching a first version of ER diagram
 
 ---
 
-#### Stage 4: Creating main branch, and master bransh for the project
+#### Stage 4: Creating main branch, and master branch for the project
 
 repo link : https://github.com/abdallahmoubarak/simple-linkedin-clone
 
@@ -76,18 +76,40 @@ repo link : https://github.com/abdallahmoubarak/simple-linkedin-clone
 
 #### Stage 5: Presenting the project
 
-##### - Sign in process
+<table>
+  <tr>
+    <th><h4>Sign in process</h4></th>
+  </tr>
+  <tr>
+    <td><img src="./src/signin.gif" /></td>
+  </tr>
+</table>
 
-<img src='./src/signin.gif' >
+<table>
+  <tr>
+    <th><h4>Adding job offer</h4></th>
+  </tr>
+  <tr>
+    <td><img src="./src/add_job_offer.gif" /></td>
+  </tr>
+</table>
 
-##### - Adding job offer
+<table>
+  <tr>
+    <th><h4>Editing profile</h4></th>
+  </tr>
+  <tr>
+    <td>
+        <img src='./src/edit_profile.gif' >
+    </td>
+  </tr>
+</table>
 
-<img src='./src/add_job_offer.gif' >
-
-##### - Editing profile
-
-<img src='./src/edit_profile.gif' >
-
-##### - Reviewing applicants
-
-<img src='./src/review_applicant.gif' >
+<table>
+  <tr>
+    <th><h4>Reviewing applicants</h4></th>
+  </tr>
+  <tr>
+    <td><img src="./src/review_applicant.gif" /></td>
+  </tr>
+</table>
